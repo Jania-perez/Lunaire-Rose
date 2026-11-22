@@ -19,6 +19,8 @@
 </head>
 <body>
 
+<div id="page-transition" aria-hidden="true"></div>
+
 <a href="#inicio" class="skip-link">Saltar al contenido</a>
 
 <!-- NAV STICKY -->
@@ -41,7 +43,7 @@
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="hero-content hero-in">
     <p class="eyebrow">Boutique de vestidos · Cartagena</p>
-    <h1>Cada vestido,<br><span>una declaración</span></h1>
+    <h1 id="hero-type"><span id="type-line1"></span><br><span id="type-line2"></span><span class="type-caret">|</span></h1>
     <p>Piezas exclusivas, confeccionadas para la mujer que no pasa desapercibida. Elegancia atemporal, hecha a mano en Cartagena.</p>
     <a href="#coleccion" class="cta-btn sans">Ver colección</a>
   </div>
@@ -73,7 +75,7 @@
       <p>"Cada rincón de Lunaire Rose está pensado para que te sientas tan especial como la pieza que te llevas."</p>
     </div>
     <div class="bento-tile bento-stat reveal">
-      <div class="num">2007</div>
+      <div class="num" data-counter data-target="2007">0</div>
       <div class="lbl">Desde</div>
     </div>
     <div class="bento-tile bento-interior reveal">
