@@ -17,4 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealEls.forEach((el) => el.classList.add('revealed'));
   }
+
+  // Precio "Consultar": oculto por defecto, aparece al hacer clic.
+  document.querySelectorAll('[data-price-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const row = btn.closest('[data-price-row]');
+      const value = row.querySelector('[data-price-value]');
+      value.classList.add('shown');
+      btn.classList.add('hidden-after');
+    });
+  });
 });
