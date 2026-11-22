@@ -1,6 +1,22 @@
 // Lunaire Rose — interacciones del sitio
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Navbar sólida + parallax del hero al hacer scroll.
+  const nav = document.getElementById('site-nav');
+  const heroBg = document.getElementById('hero-bg');
+
+  const onScroll = () => {
+    const y = window.scrollY || 0;
+    if (nav) {
+      nav.classList.toggle('nav-solid', y > 40);
+    }
+    if (heroBg) {
+      heroBg.style.transform = `translateY(${Math.min(y * 0.18, 90)}px)`;
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   // Scroll-reveal: las secciones con la clase .reveal aparecen suavemente
   // cuando entran al viewport.
   const revealEls = document.querySelectorAll('.reveal');
