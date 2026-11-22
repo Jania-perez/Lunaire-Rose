@@ -61,4 +61,25 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('hidden-after');
     });
   });
+
+  // Aviso de cookies: se muestra una vez por visitante (localStorage), con
+  // manejo defensivo por si el navegador bloquea el storage.
+  const banner = document.getElementById('cookie-banner');
+  if (banner) {
+    let alreadyAnswered = false;
+    try {
+      alreadyAnswered = localStorage.getItem('lr-cookies') !== null;
+    } catch (e) { /* localStorage no disponible: mostramos el aviso igual */ }
+
+    if (!alreadyAnswered) {
+      setTimeout(() => banner.classList.add('shown'), 900);
+    }
+
+    const closeBanner = (value) => {
+      banner.classList.remove('shown');
+      try { localStorage.setItem('lr-cookies', value); } catch (e) { /* ignorar */ }
+    };
+    document.getElementById('cookie-accept')?.addEventListener('click', () => closeBanner('accepted'));
+    document.getElementById('cookie-decline')?.addEventListener('click', () => closeBanner('declined'));
+  }
 });
