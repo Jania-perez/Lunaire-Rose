@@ -1,0 +1,25 @@
+# Lunaire Rose — Boutique de vestidos
+
+Proyecto escolar (100% ficticio) para la entrega de "herramientas web": sitio
+estático de una boutique de vestidos de lujo en Cartagena, Colombia.
+
+## Estructura
+
+- `index.html` — página principal (inicio, misión, visión, nosotros, colección, reseñas, contacto)
+- `terminos.html` — términos y condiciones, política de garantía, reclamos
+- `404.html` — página de error personalizada
+- `css/styles.css` — estilos (variables, tipografía, animaciones)
+- `js/main.js` — navbar sticky, scroll-reveal, parallax, precios "consultar"
+- `assets/` — imágenes del sitio
+
+## Cómo verlo localmente
+
+Abre `index.html` en el navegador, o corre un servidor simple:
+
+```
+python3 -m http.server 8080
+```
+
+## Despliegue
+
+Pensado para GitHub Pages (rama `main`, carpeta raíz).
