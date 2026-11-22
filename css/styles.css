@@ -368,3 +368,63 @@ img { max-width: 100%; display: block; }
 @media (max-width: 860px) {
   .review-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- CONTACTO / MAPA / FOOTER ---------- */
+#contacto {
+  border-top: 1px solid var(--border);
+  padding: 56px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.contact-col { flex: 1 1 260px; }
+.contact-col.map-col { flex: 1 1 320px; }
+.contact-col .brand { margin-bottom: 12px; }
+.contact-info {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.social-row { display: flex; gap: 12px; }
+.social-badge {
+  width: 42px; height: 42px;
+  border: 1px solid rgba(201,162,75,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.social-badge svg { width: 18px; height: 18px; fill: currentColor; }
+.social-badge:hover { background: var(--accent); color: var(--bg); transform: translateY(-3px); }
+
+.legal-title {
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.legal-list { font-size: 13px; color: var(--muted); line-height: 1.9; list-style: none; padding: 0; margin: 0; }
+.legal-list a { color: var(--muted); }
+.legal-list a:hover { color: var(--accent); }
+
+.cc-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 14px; font-size: 11px; color: var(--muted);
+  border: 1px solid var(--border); padding: 6px 10px; border-radius: 2px;
+}
+.cc-badge svg { width: 16px; height: 16px; fill: var(--accent); }
+
+.map-frame {
+  width: 100%; height: 220px; border: 1px solid var(--border); border-radius: 2px;
+  overflow: hidden;
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.3) invert(0.92) contrast(0.9); }
+.map-address { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+
+.copyright {
+  text-align: center; padding: 20px; font-size: 11px; color: #6b6052;
+  border-top: 1px solid rgba(201,162,75,0.1);
+}
+
+@media (max-width: 860px) {
+  #contacto { padding: 40px 24px; }
+}
