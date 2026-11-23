@@ -370,6 +370,16 @@ img { max-width: 100%; display: block; }
   .bento-facade { grid-column: span 2; grid-row: span 2; }
   .bento-quote { grid-column: span 2; }
   .bento-interior, .bento-stat { grid-column: span 1; }
+  /* En mobile el nav ocupa más alto (logo + botón en su propia fila),
+     así que el margen negativo pensado para "flotar sobre el hero" en
+     escritorio tapaba el inicio del contenido. En mobile el nav queda
+     sólido desde el principio, sin solaparse con nada de abajo. */
+  #site-nav {
+    margin-bottom: 0;
+    background: rgba(15, 13, 12, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
 }
 
 /* ---------- COLECCION ---------- */
