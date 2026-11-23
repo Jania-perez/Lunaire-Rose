@@ -27,11 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementById('site-nav');
   const heroBg = document.getElementById('hero-bg');
 
+  // En móvil el header se oculta al bajar y reaparece al subir.
+  const mobileQuery = window.matchMedia('(max-width: 720px)');
+  let lastY = window.scrollY || 0;
+
   const onScroll = () => {
     const y = window.scrollY || 0;
     if (nav) {
       nav.classList.toggle('nav-solid', y > 40);
+
+      if (mobileQuery.matches && !document.body.classList.contains('menu-open')) {
+        const delta = y - lastY;
+        if (y <= 40 || delta < -4) {
+          nav.classList.remove('nav-hidden');   // arriba del todo o subiendo
+        } else if (delta > 4) {
+          nav.classList.add('nav-hidden');      // bajando
+        }
+      }
     }
+    lastY = y;
     if (heroBg) {
       heroBg.style.transform = `translateY(${Math.min(y * 0.18, 90)}px)`;
     }
@@ -43,17 +57,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.getElementById('nav-toggle');
   const navLinks = document.getElementById('nav-links');
   if (navToggle && navLinks) {
+    const setMenu = (open) => {
+      navLinks.classList.toggle('open', open);
+      document.body.classList.toggle('menu-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      navToggle.textContent = open ? '✕' : '☰';
+      if (open && nav) nav.classList.remove('nav-hidden');
+    };
+
     navToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.textContent = isOpen ? '✕' : '☰';
+      setMenu(!navLinks.classList.contains('open'));
     });
     navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.textContent = '☰';
-      });
+      link.addEventListener('click', () => setMenu(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenu(false);
+    });
+    // Si se pasa a escritorio con el menú abierto, se cierra y se restablece todo.
+    mobileQuery.addEventListener('change', (e) => {
+      if (!e.matches) {
+        setMenu(false);
+        if (nav) nav.classList.remove('nav-hidden');
+      }
     });
   }
 
