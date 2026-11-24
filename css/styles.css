@@ -16,13 +16,6 @@
 
 html { scroll-behavior: smooth; }
 
-/* Compensa el navbar sticky para que todas las anclas (#inicio, #mision,
-   #vision, etc.) aterricen en el mismo punto relativo al tope, sin
-   importar qué tan anidado esté el elemento en el HTML. */
-#inicio, #mision, #vision, #nosotros, #coleccion, #resenas, #contacto {
-  scroll-margin-top: 100px;
-}
-
 body {
   margin: 0;
   background: var(--bg);
@@ -140,15 +133,40 @@ img { max-width: 100%; display: block; }
   letter-spacing: 4px;
   color: var(--fg);
 }
+.brand { white-space: nowrap; }
 .nav-links {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 28px;
   font-size: 13px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
-.nav-link { position: relative; color: var(--fg); }
+.nav-link { position: relative; color: var(--fg); white-space: nowrap; }
+.nav-link.active { color: var(--fg); }
+.nav-link.active::after { width: 100%; }
+.nav-cta {
+  white-space: nowrap;
+  padding: 11px 22px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.nav-cta:hover { background: transparent; color: var(--accent-light); }
+
+/* Entre 1141px y 1340px caben los 7 elementos si se compacta un poco.
+   Por debajo de 1140px el menú pasa a las 3 rayas. */
+@media (min-width: 1141px) and (max-width: 1340px) {
+  #site-nav { padding: 20px 32px; }
+  .brand { font-size: 22px; letter-spacing: 3px; }
+  .nav-links { gap: 18px; font-size: 12px; letter-spacing: 1px; }
+  .nav-cta { padding: 9px 14px; letter-spacing: 1.5px; }
+}
 .nav-link::after {
   content: '';
   position: absolute;
@@ -173,9 +191,17 @@ img { max-width: 100%; display: block; }
   cursor: pointer;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1140px) {
   /* Altura del header en móvil (padding 18px x2 + botón 38px + borde 1px). */
-  #site-nav { --nav-h: 75px; }
+  #site-nav {
+    --nav-h: 75px;
+    padding: 18px 24px;
+    gap: 14px;
+    /* En móvil el nav va en el flujo (no flota sobre el hero) y sólido. */
+    margin-bottom: 0;
+    background: rgba(15, 13, 12, 0.94);
+    border-bottom: 1px solid var(--border);
+  }
 
   /* El header se oculta al bajar y reaparece al subir (lo controla main.js).
      Con el menú abierto nunca se oculta. */
@@ -208,8 +234,9 @@ img { max-width: 100%; display: block; }
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
-    gap: 32px;
+    justify-content: safe center;
+    overflow-y: auto;
+    gap: 28px;
     font-size: 16px;
     transform: translateY(-12px);
     opacity: 0;
@@ -237,9 +264,14 @@ img { max-width: 100%; display: block; }
     padding: 0;
     width: auto;
   }
+  .nav-links .nav-link.active { color: var(--accent-light); }
+  .nav-links .nav-cta { margin-top: 8px; padding: 14px 34px; font-size: 13px; }
 
   /* Evita que la página se desplace por detrás del menú abierto. */
   body.menu-open { overflow: hidden; }
+}
+@media (max-width: 1140px) and (max-height: 640px) {
+  .nav-links { gap: 18px; }
 }
 
 /* ---------- HERO ---------- */
@@ -336,11 +368,31 @@ img { max-width: 100%; display: block; }
 .mv-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 48px;
-  padding: 110px 0 100px;
+  gap: 28px;
+  padding: 0 0 36px;
 }
-.mv-block { flex: 1 1 320px; }
+.mv-block {
+  flex: 1 1 320px;
+  background: var(--bg-tile);
+  border: 1px solid var(--border);
+  padding: 44px 40px;
+  transition: border-color 0.4s ease, transform 0.4s ease, opacity 0.9s cubic-bezier(0.22,1,0.36,1);
+}
+.mv-block:hover { border-color: rgba(201,162,75,0.4); transform: translateY(-4px); }
 .mv-block .eyebrow { margin-bottom: 14px; display: block; }
+
+.values-row {
+  list-style: none;
+  margin: 0;
+  padding: 40px 0 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+}
+.value-item { display: flex; flex-direction: column; gap: 8px; }
+.value-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--accent); }
+.value-text { font-size: 14px; line-height: 1.7; color: var(--muted); }
 .mv-block p {
   font-family: 'Cormorant Garamond', serif;
   font-size: 22px;
@@ -404,25 +456,17 @@ img { max-width: 100%; display: block; }
 @media (max-width: 860px) {
   .container { padding: 0 24px; }
   .section-title { font-size: 28px; }
-  #site-nav { padding: 18px 24px; gap: 14px; }
   #inicio { height: 640px; }
   .hero-content { padding: 0 24px; }
   .hero-content h1 { font-size: 46px; max-width: 100%; }
   .hero-content p { max-width: 100%; }
-  .mv-wrap { padding: 70px 0 60px; gap: 32px; }
+  .mv-wrap { gap: 20px; }
+  .mv-block { padding: 32px 26px; }
+  .values-row { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 32px; }
   .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; }
   .bento-facade { grid-column: span 2; grid-row: span 2; }
   .bento-quote { grid-column: span 2; }
   .bento-interior, .bento-stat { grid-column: span 1; }
-  /* En mobile el nav ocupa más alto (logo + botón en su propia fila),
-     así que el margen negativo pensado para "flotar sobre el hero" en
-     escritorio tapaba el inicio del contenido. En mobile el nav queda
-     sólido desde el principio, sin solaparse con nada de abajo. */
-  #site-nav {
-    margin-bottom: 0;
-    background: rgba(15, 13, 12, 0.94);
-    border-bottom: 1px solid var(--border);
-  }
 }
 
 /* ---------- COLECCION ---------- */
@@ -527,16 +571,6 @@ img { max-width: 100%; display: block; }
 }
 
 /* ---------- CONTACTO / MAPA / FOOTER ---------- */
-#contacto {
-  border-top: 1px solid var(--border);
-  padding: 56px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-.contact-col { flex: 1 1 260px; }
-.contact-col.map-col { flex: 1 1 320px; }
-.contact-col .brand { margin-bottom: 12px; }
 .contact-info {
   font-size: 13px;
   color: var(--muted);
@@ -582,10 +616,6 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(201,162,75,0.1);
 }
 
-@media (max-width: 860px) {
-  #contacto { padding: 40px 24px; }
-}
-
 /* ---------- COOKIE BANNER ---------- */
 #cookie-banner {
   position: fixed;
@@ -615,3 +645,132 @@ img { max-width: 100%; display: block; }
 }
 .cookie-accept { background: var(--accent); color: var(--bg); border: 1px solid var(--accent); }
 .cookie-decline { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+
+/* =====================================================================
+   NAVEGACIÓN POR VISTAS (sin scroll entre secciones)
+   Cada sección es una "vista": solo una se muestra a la vez, con un
+   fundido suave al cambiar (lo controla main.js).
+   ===================================================================== */
+#app { outline: none; }
+.view { display: none; }
+.view.active { display: block; animation: viewIn 0.6s cubic-bezier(0.22,1,0.36,1) both; }
+.view.leaving { display: block; animation: viewOut 0.22s ease both; }
+@keyframes viewIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes viewOut { from { opacity: 1; } to { opacity: 0; transform: translateY(-8px); } }
+
+/* Encabezado de cada vista (el nav flota sobre el contenido en escritorio). */
+.view-head { padding-top: 150px; padding-bottom: 8px; text-align: center; }
+.view-head .eyebrow { margin: 0 0 8px; }
+.view > .container:last-child { padding-bottom: 100px; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
+.hero-actions .cta-btn { margin-top: 0; }
+.cta-ghost { background: transparent; color: var(--fg); border-color: rgba(243,237,227,0.45); }
+.cta-ghost:hover { color: var(--fg); border-color: var(--accent); }
+
+.view-cta { text-align: center; margin-top: 56px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.view-cta p { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--fg); }
+
+/* ---------- PREGUNTAS FRECUENTES ---------- */
+.faq-wrap { max-width: 900px; }
+.faq-list { display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: var(--bg-tile); border: 1px solid var(--border); transition: border-color 0.3s ease; }
+.faq-item:hover, .faq-item.open { border-color: rgba(201,162,75,0.45); }
+.faq-item h3 { margin: 0; font: inherit; }
+.faq-q {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 22px 26px; background: none; border: 0; color: var(--fg);
+  font-size: 16px; font-weight: 400; text-align: left; cursor: pointer;
+  transition: color 0.3s ease;
+}
+.faq-q:hover, .faq-item.open .faq-q { color: var(--accent-light); }
+.faq-icon { position: relative; flex: 0 0 14px; width: 14px; height: 14px; }
+.faq-icon::before, .faq-icon::after {
+  content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px;
+  background: var(--accent); transition: transform 0.35s ease;
+}
+.faq-icon::after { transform: rotate(90deg); }
+.faq-item.open .faq-icon::after { transform: rotate(0deg); }
+.faq-a {
+  display: grid; grid-template-rows: 0fr; visibility: hidden;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22,1,0.36,1), visibility 0s linear 0.4s;
+}
+.faq-item.open .faq-a { grid-template-rows: 1fr; visibility: visible; transition-delay: 0s; }
+.faq-a > div { overflow: hidden; }
+.faq-a p { margin: 0; padding: 0 26px 24px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.faq-a a { color: var(--accent); border-bottom: 1px solid rgba(201,162,75,0.4); }
+
+/* ---------- CONTACTO / AGENDAR CITA ---------- */
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 40px; align-items: start; }
+.cita-card, .visit-card { background: var(--bg-tile); border: 1px solid var(--border); padding: 36px; }
+.card-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; margin: 0 0 8px; color: var(--fg); }
+.cita-lead { margin: 0 0 24px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; flex: 1 1 0; min-width: 0; }
+.field-row { display: flex; gap: 16px; }
+.field label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+.field input, .field select, .field textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 2px;
+  padding: 14px 16px; color: var(--fg); font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 300;
+  color-scheme: dark; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.field textarea { resize: vertical; min-height: 96px; }
+.field input::placeholder, .field textarea::placeholder { color: #6b6052; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,162,75,0.15);
+}
+.field.invalid input, .field.invalid select { border-color: #c4574d; }
+.form-error { color: #e08a80; font-size: 13px; line-height: 1.6; margin: 0 0 14px; }
+.cita-submit { width: 100%; text-align: center; cursor: pointer; margin-top: 6px; font-family: 'Jost', sans-serif; }
+.cita-submit:hover { transform: scale(1.02); }
+.cita-note { margin: 14px 0 0; font-size: 12px; line-height: 1.7; color: var(--muted); }
+.cita-note a { color: var(--accent); border-bottom: 1px solid rgba(201,162,75,0.4); }
+
+.visit-card .contact-info { font-size: 14px; }
+.hours-box { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 0; margin: 4px 0 20px; }
+.hours-box .legal-title { margin-bottom: 8px; }
+.hours-row { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--fg); padding: 4px 0; }
+.hours-row span:last-child { color: var(--muted); }
+.visit-card .map-frame { margin-bottom: 20px; }
+
+/* ---------- FOOTER (en todas las vistas) ---------- */
+#site-footer { border-top: 1px solid var(--border); background: #0b0a09; }
+.footer-inner { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 48px; padding-top: 64px; padding-bottom: 48px; }
+.footer-brand .brand { font-size: 22px; letter-spacing: 3px; margin-bottom: 14px; }
+.footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.8; max-width: 380px; margin: 0 0 20px; }
+.footer-hours { font-size: 13px; color: var(--muted); line-height: 1.8; margin: 0 0 24px; }
+.legal-list a.active { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid rgba(201,162,75,0.1); padding: 22px 24px 30px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;
+}
+.footer-bottom .copyright { border-top: 0; padding: 0; margin: 0; }
+.footer-bottom .cc-badge { margin-top: 0; }
+.legal-list a, .footer-bottom a { transition: color 0.3s ease; }
+.footer-bottom .cc-badge a { color: var(--accent); }
+
+@media (max-width: 1140px) {
+  .view-head { padding-top: 48px; }
+}
+
+@media (max-width: 860px) {
+  .view-head { padding-top: 40px; }
+  .view > .container:last-child { padding-bottom: 72px; }
+  .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .cita-card, .visit-card { padding: 26px 22px; }
+  .footer-inner { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 48px; padding-bottom: 32px; }
+  .faq-q { padding: 18px 20px; font-size: 15px; }
+  .faq-a p { padding: 0 20px 20px; }
+  .view-cta { margin-top: 40px; }
+  .view-cta p { font-size: 20px; }
+}
+@media (max-width: 520px) {
+  .field-row { flex-direction: column; gap: 0; }
+  .values-row { grid-template-columns: minmax(0, 1fr); }
+  .hero-actions .cta-btn { padding: 15px 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view.active, .view.leaving { animation: none; }
+  .reveal { transition: none; }
+  .faq-a { transition: none; }
+}
