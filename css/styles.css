@@ -657,6 +657,7 @@ img { max-width: 100%; display: block; }
 .view.leaving { display: block; animation: viewOut 0.3s ease-in both; }
 @keyframes viewIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes viewOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes viewFade { from { opacity: 0; } to { opacity: 1; } }
 
 /* Encabezado de cada vista (el nav flota sobre el contenido en escritorio). */
 .view-head { padding-top: 150px; padding-bottom: 8px; text-align: center; }
@@ -770,7 +771,9 @@ img { max-width: 100%; display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .view.active, .view.leaving { animation: none; }
+  /* Solo desvanecido (sin desplazamiento): la transición sigue siendo visible y suave. */
+  .view.active { animation: viewFade 0.45s ease-out both; }
+  .view.leaving { animation: viewOut 0.2s ease-in both; }
   .reveal { transition: none; }
   .faq-a { transition: none; }
 }
@@ -897,6 +900,11 @@ body.lightbox-open { overflow: hidden; }
   .welcome-grid .qr-link, .welcome-grid .qr-card img { max-width: 288px; }
 }
 .welcome-grid .qr-card figcaption { font-size: 14px; }
+@media (min-width: 1280px) {
+  .welcome-grid .qr-card { width: 480px; padding: 32px; }
+  .welcome-grid .qr-link, .welcome-grid .qr-card img { max-width: 416px; }
+}
+
 @media (max-width: 860px) {
   .welcome-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; justify-items: center; }
   .welcome-letters { text-align: center; }

@@ -148,15 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Primero se desvanece la vista actual y luego aparece la nueva.
       const prevShown = prev && prev.classList.contains('active');
-      if (initial || !prevShown || reduceMotion) {
+      if (initial || !prevShown) {
         reveal();
       } else {
         prev.classList.remove('active');
         prev.classList.add('leaving');
         // Si estás más abajo, la página sube suavemente mientras se desvanece.
         const scrolled = window.scrollY > 40;
-        if (scrolled) window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        timer = setTimeout(reveal, scrolled ? 380 : 300);
+        if (scrolled) window.scrollTo({ top: 0, left: 0, behavior: reduceMotion ? 'instant' : 'smooth' });
+        timer = setTimeout(reveal, reduceMotion ? 200 : (scrolled ? 380 : 300));
       }
     };
 
