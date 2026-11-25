@@ -900,7 +900,11 @@ body.lightbox-open { overflow: hidden; }
   .welcome-grid .qr-link, .welcome-grid .qr-card img { max-width: 288px; }
 }
 .welcome-grid .qr-card figcaption { font-size: 14px; }
+@media (min-width: 1100px) {
+  .welcome-letters .welcome-lead { font-size: 20px; max-width: 540px; line-height: 1.7; }
+}
 @media (min-width: 1280px) {
+  .welcome-letters .welcome-lead { font-size: 22px; max-width: 580px; }
   .welcome-grid .qr-card { width: 480px; padding: 32px; }
   .welcome-grid .qr-link, .welcome-grid .qr-card img { max-width: 416px; }
 }
