@@ -97,13 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
       'mision-vision': 'Misión y Visión — Lunaire Rose',
       'nosotros': 'Sobre nosotros — Lunaire Rose',
       'coleccion': 'Colección — Lunaire Rose',
-      'preguntas': 'Preguntas frecuentes — Lunaire Rose',
       'contacto': 'Contacto y citas — Lunaire Rose'
     };
     // Enlaces antiguos (index.html#coleccion, etc.) siguen funcionando.
     const legacy = {
       inicio: 'inicio', mision: 'mision-vision', vision: 'mision-vision',
-      nosotros: 'nosotros', resenas: 'nosotros', coleccion: 'coleccion', contacto: 'contacto'
+      nosotros: 'nosotros', resenas: 'nosotros', instalaciones: 'nosotros',
+      coleccion: 'coleccion', contacto: 'contacto', preguntas: 'contacto'
     };
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let current = null;
@@ -200,6 +200,46 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-expanded', String(open));
     });
   });
+
+  // ---------- Instalaciones: imagen ampliable ----------
+  // Mientras no exista assets/instalaciones.png se muestra un marcador en su lugar.
+  const planFrame = document.getElementById('plan-frame');
+  const planImg = document.getElementById('plan-img');
+  const planOpen = document.getElementById('plan-open');
+  if (planFrame && planImg && planOpen) {
+    const markEmpty = () => planFrame.classList.add('is-empty');
+    planImg.addEventListener('error', markEmpty);
+    if (planImg.complete && planImg.naturalWidth === 0) markEmpty();
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.hidden = true;
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Imagen ampliada de las instalaciones');
+    lightbox.innerHTML = '<button type="button" class="lightbox-close" aria-label="Cerrar">\u2715</button><img alt="">';
+    document.body.appendChild(lightbox);
+    const lbImg = lightbox.querySelector('img');
+    const lbClose = lightbox.querySelector('button');
+
+    const openLightbox = () => {
+      lbImg.src = planImg.currentSrc || planImg.src;
+      lbImg.alt = planImg.alt;
+      lightbox.hidden = false;
+      document.body.classList.add('lightbox-open');
+      lbClose.focus();
+    };
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      document.body.classList.remove('lightbox-open');
+      planOpen.focus();
+    };
+    planOpen.addEventListener('click', openLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target !== lbImg) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+  }
 
   // ---------- Agendar cita: arma el mensaje y abre WhatsApp ----------
   const citaForm = document.getElementById('cita-form');

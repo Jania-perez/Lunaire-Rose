@@ -5,7 +5,7 @@ estático de una boutique de vestidos de lujo en Cartagena, Colombia.
 
 ## Estructura
 
-- `index.html` — página principal con navegación por vistas (sin scroll entre secciones): Inicio, Misión y Visión, Sobre nosotros (con reseñas), Colección, Preguntas frecuentes y Contacto (agendar cita por WhatsApp)
+- `index.html` — página principal con navegación por vistas (sin scroll entre secciones): Inicio (con video de bienvenida y código QR), Misión y Visión, Colección, Sobre nosotros (con Instalaciones y reseñas) y Contacto (agendar cita por WhatsApp y preguntas frecuentes)
 - `terminos.html` — términos y condiciones, política de garantía, reclamos
 - `404.html` — página de error personalizada
 - `css/styles.css` — estilos (variables, tipografía, animaciones)

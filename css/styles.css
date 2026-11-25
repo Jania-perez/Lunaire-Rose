@@ -774,3 +774,71 @@ img { max-width: 100%; display: block; }
   .reveal { transition: none; }
   .faq-a { transition: none; }
 }
+
+/* =====================================================================
+   BIENVENIDA (video + QR), INSTALACIONES, FORMULARIO PLEGABLE
+   ===================================================================== */
+.welcome { padding-top: 96px; }
+.welcome-text { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+.welcome-text .eyebrow { margin: 0 0 8px; }
+.welcome-text .section-title { margin-bottom: 16px; }
+.welcome-lead { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.welcome-media { display: flex; gap: 28px; align-items: center; }
+.video-frame { flex: 1 1 0; min-width: 0; aspect-ratio: 16 / 9; background: #000; border: 1px solid var(--border); }
+.video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.qr-card {
+  flex: 0 0 210px; margin: 0; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: var(--bg-tile); border: 1px solid var(--border); text-align: center;
+}
+.qr-card img { display: block; width: 100%; max-width: 174px; height: auto; background: #fff; }
+.qr-card figcaption { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); line-height: 1.6; }
+
+#instalaciones .section-title { margin-bottom: 14px; }
+.plan-lead { max-width: 560px; margin: 0 auto 36px; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.plan-frame { margin: 0; }
+.plan-open {
+  display: block; width: 100%; padding: 0; background: var(--bg-tile); border: 1px solid var(--border);
+  cursor: zoom-in; transition: border-color 0.3s ease;
+}
+.plan-open:hover, .plan-open:focus-visible { border-color: rgba(201,162,75,0.5); }
+.plan-open img { display: block; width: 100%; height: auto; }
+.plan-empty {
+  display: none; align-items: center; justify-content: center; aspect-ratio: 16 / 9; padding: 24px; text-align: center;
+  border: 1px dashed rgba(201,162,75,0.4); background: var(--bg-tile); color: var(--muted);
+  font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+}
+.plan-frame.is-empty .plan-open, .plan-frame.is-empty figcaption { display: none; }
+.plan-frame.is-empty .plan-empty { display: flex; }
+.plan-frame figcaption { margin-top: 12px; text-align: center; font-size: 12px; letter-spacing: 1px; color: var(--muted); }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+  padding: 24px; background: rgba(8,7,6,0.94); cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: default; }
+.lightbox-close {
+  position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; cursor: pointer;
+  background: var(--bg-tile); color: var(--fg); border: 1px solid var(--border); font-size: 18px;
+}
+body.lightbox-open { overflow: hidden; }
+
+.more-opts { margin: 0 0 18px; border-top: 1px solid var(--border); padding-top: 6px; }
+.more-opts summary {
+  display: flex; justify-content: space-between; align-items: center; padding: 12px 0 16px; cursor: pointer;
+  list-style: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent);
+}
+.more-opts summary::-webkit-details-marker { display: none; }
+.more-opts summary::after { content: '+'; font-size: 18px; line-height: 1; }
+.more-opts[open] summary::after { content: '\2212'; }
+.contact-layout { padding-bottom: 80px; }
+.footer-hours { margin-bottom: 0; }
+
+@media (max-width: 860px) {
+  .welcome { padding-top: 64px; }
+  .welcome-media { flex-direction: column; align-items: stretch; gap: 20px; }
+  .video-frame { flex: none; width: 100%; }
+  .qr-card { flex: none; flex-direction: row; text-align: left; gap: 16px; padding: 14px; }
+  .qr-card img { width: 112px; flex: none; }
+  .contact-layout { padding-bottom: 56px; }
+}

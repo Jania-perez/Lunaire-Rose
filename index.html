@@ -41,7 +41,6 @@
     <a href="#/mision-vision" class="nav-link" data-route="mision-vision">Misión y Visión</a>
     <a href="#/nosotros" class="nav-link" data-route="nosotros">Sobre nosotros</a>
     <a href="#/coleccion" class="nav-link" data-route="coleccion">Colección</a>
-    <a href="#/preguntas" class="nav-link" data-route="preguntas">Preguntas frecuentes</a>
     <a href="#/contacto" class="nav-link" data-route="contacto">Contacto</a>
     <a href="#/contacto" class="nav-cta">Agendar cita</a>
   </div>
@@ -64,6 +63,29 @@
         </div>
       </div>
     </header>
+
+    <!-- BIENVENIDA: video + código QR -->
+    <div id="bienvenida" class="container welcome">
+      <div class="welcome-text reveal">
+        <p class="eyebrow">Bienvenida</p>
+        <h2 class="section-title">Conoce Lunaire Rose</h2>
+        <p class="welcome-lead">Un recorrido breve por nuestra boutique y lo que hacemos. Mira el video o escanea el código con tu celular.</p>
+      </div>
+      <div class="welcome-media reveal">
+        <div class="video-frame">
+          <iframe id="welcome-video" title="Video de bienvenida a Lunaire Rose"
+            src="https://www.youtube-nocookie.com/embed/PWILmPGv274"
+            loading="lazy"
+            allow="encrypted-media; picture-in-picture; fullscreen"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+        <figure class="qr-card">
+          <img src="assets/qr-bienvenida.png" alt="Código QR que abre el video de bienvenida de Lunaire Rose en YouTube" width="174" height="174">
+          <figcaption>Escanéalo para ver el video</figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
   <!-- ============ MISIÓN Y VISIÓN ============ -->
@@ -128,9 +150,23 @@
       </div>
     </div>
 
+    <!-- INSTALACIONES -->
+    <div id="instalaciones" class="container">
+      <p class="eyebrow" style="text-align:center; margin-bottom:8px;">02 — Instalaciones</p>
+      <h2 class="section-title">Diseño de nuestras instalaciones</h2>
+      <p class="plan-lead">Un vistazo al diseño de nuestro espacio, pensado para que cada visita sea cómoda y tranquila.</p>
+      <figure class="plan-frame reveal" id="plan-frame">
+        <button type="button" class="plan-open" id="plan-open" aria-label="Ampliar la imagen de las instalaciones">
+          <img id="plan-img" src="assets/instalaciones.png" alt="Diseño de las instalaciones de la boutique Lunaire Rose">
+        </button>
+        <div class="plan-empty"><span>Imagen de las instalaciones próximamente</span></div>
+        <figcaption>Toca la imagen para ampliarla</figcaption>
+      </figure>
+    </div>
+
     <!-- RESEÑAS -->
     <div id="resenas" class="container">
-      <p class="eyebrow" style="text-align:center; margin-bottom:8px;">02 — Lo que dicen</p>
+      <p class="eyebrow" style="text-align:center; margin-bottom:8px;">03 — Lo que dicen</p>
       <h2 class="section-title">Nuestras clientas</h2>
       <div class="review-grid">
         <div class="review-card reveal">
@@ -205,54 +241,6 @@
     </div>
   </section>
 
-  <!-- ============ PREGUNTAS FRECUENTES ============ -->
-  <section class="view" id="view-preguntas" data-view="preguntas" aria-label="Preguntas frecuentes">
-    <div class="view-head container">
-      <p class="eyebrow">Resolvemos tus dudas</p>
-      <h2 class="section-title">Preguntas frecuentes</h2>
-    </div>
-    <div class="container faq-wrap">
-      <div class="faq-list">
-
-        <div class="faq-item">
-          <h3><button type="button" class="faq-q sans" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><span>¿Cómo agendo una cita para probarme un vestido?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div><p>Entra a <a href="#/contacto">Contacto</a>, elige el tipo de visita, la fecha y la hora, y envía la solicitud. Se abre WhatsApp con tu mensaje ya escrito y allí te confirmamos tu cita.</p></div></div>
-        </div>
-
-        <div class="faq-item">
-          <h3><button type="button" class="faq-q sans" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span>¿Cuál es el horario de atención?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Atendemos de lunes a sábado, de 8:00 a. m. a 5:00 p. m. Los domingos permanecemos cerrados.</p></div></div>
-        </div>
-
-        <div class="faq-item">
-          <h3><button type="button" class="faq-q sans" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span>¿Dónde están ubicados?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Calle Santa Fe #49D-33, Barrio 9 de Abril, Cartagena de Indias, Bolívar. En <a href="#/contacto">Contacto</a> encuentras el mapa.</p></div></div>
-        </div>
-
-        <div class="faq-item">
-          <h3><button type="button" class="faq-q sans" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span>¿Cuánto cuestan los vestidos?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>En la <a href="#/coleccion">Colección</a> puedes tocar "Consultar precio" en cada vestido para ver su valor de referencia. El precio final se confirma directamente (por WhatsApp, correo o en tienda), porque puede variar según la talla, la tela o la personalización.</p></div></div>
-        </div>
-
-        <div class="faq-item">
-          <h3><button type="button" class="faq-q sans" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span>¿Puedo personalizar un vestido o ver si está disponible?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div><p>Sí, cuéntanos qué necesitas (talla, tela o algún detalle especial) y lo revisamos contigo. La disponibilidad depende del inventario, por eso siempre la confirmamos antes de formalizar un pedido.</p></div></div>
-        </div>
-
-        <div class="faq-item">
-          <h3><button type="button" class="faq-q sans" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span>¿Qué garantía tienen las piezas?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Todas las piezas tienen 15 días calendario de garantía por defectos de fabricación (costuras, cierres o pedrería suelta), contados desde la entrega. Conserva tu comprobante de compra. Más detalles en la <a href="terminos.html#garantia">política de garantía</a>.</p></div></div>
-        </div>
-
-        <div class="faq-item">
-          <h3><button type="button" class="faq-q sans" id="faq-q7" aria-expanded="false" aria-controls="faq-a7"><span>¿Cómo hago un reclamo?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a7" role="region" aria-labelledby="faq-q7"><div><p>Escríbenos a janiaperez346@gmail.com o por WhatsApp al +57 316 102 5260 con tu nombre, la descripción del reclamo y fotos si aplica. Respondemos en un máximo de 5 días hábiles. Ver <a href="terminos.html#reclamos">reclamos</a>.</p></div></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ============ CONTACTO / AGENDAR CITA ============ -->
   <section class="view" id="view-contacto" data-view="contacto" aria-label="Contacto y agendamiento">
     <div class="view-head container">
@@ -273,15 +261,6 @@
           <label for="cita-telefono">Número de teléfono</label>
           <input type="tel" id="cita-telefono" name="telefono" placeholder="Ej: 3001234567" autocomplete="tel" inputmode="tel" required>
         </div>
-        <div class="field">
-          <label for="cita-tipo">Tipo de visita</label>
-          <select id="cita-tipo" name="tipo">
-            <option>Probarme un vestido de la colección</option>
-            <option>Asesoría personalizada</option>
-            <option>Personalización o vestido a medida</option>
-            <option>Otra consulta</option>
-          </select>
-        </div>
         <div class="field-row">
           <div class="field">
             <label for="cita-fecha">Fecha</label>
@@ -292,10 +271,22 @@
             <select id="cita-hora" name="hora" required></select>
           </div>
         </div>
-        <div class="field">
-          <label for="cita-mensaje">Mensaje (opcional)</label>
-          <textarea id="cita-mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué vestido o evento tienes en mente..."></textarea>
-        </div>
+        <details class="more-opts">
+          <summary class="sans">Tipo de visita y mensaje (opcional)</summary>
+          <div class="field">
+            <label for="cita-tipo">Tipo de visita</label>
+            <select id="cita-tipo" name="tipo">
+              <option>Probarme un vestido de la colección</option>
+              <option>Asesoría personalizada</option>
+              <option>Personalización o vestido a medida</option>
+              <option>Otra consulta</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cita-mensaje">Mensaje</label>
+            <textarea id="cita-mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué vestido o evento tienes en mente..."></textarea>
+          </div>
+        </details>
 
         <p class="form-error" id="cita-error" role="alert" hidden></p>
         <button type="submit" class="cta-btn sans cita-submit">Agendar por WhatsApp</button>
@@ -337,6 +328,50 @@
       </aside>
 
     </div>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <div id="preguntas" class="container faq-wrap">
+      <p class="eyebrow" style="text-align:center; margin-bottom:8px;">Resolvemos tus dudas</p>
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <h3><button type="button" class="faq-q sans" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><span>¿Cómo agendo una cita para probarme un vestido?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div><p>Completa el formulario de esta página con tu nombre, teléfono, fecha y hora, y envía la solicitud. Se abre WhatsApp con tu mensaje ya escrito y allí te confirmamos tu cita.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button type="button" class="faq-q sans" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span>¿Cuál es el horario de atención?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Atendemos de lunes a sábado, de 8:00 a. m. a 5:00 p. m. Los domingos permanecemos cerrados.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button type="button" class="faq-q sans" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span>¿Dónde están ubicados?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Calle Santa Fe #49D-33, Barrio 9 de Abril, Cartagena de Indias, Bolívar. El mapa está en esta misma página.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button type="button" class="faq-q sans" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span>¿Cuánto cuestan los vestidos?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>En la <a href="#/coleccion">Colección</a> puedes tocar "Consultar precio" en cada vestido para ver su valor de referencia. El precio final se confirma directamente (por WhatsApp, correo o en tienda), porque puede variar según la talla, la tela o la personalización.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button type="button" class="faq-q sans" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span>¿Puedo personalizar un vestido o ver si está disponible?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div><p>Sí, cuéntanos qué necesitas (talla, tela o algún detalle especial) y lo revisamos contigo. La disponibilidad depende del inventario, por eso siempre la confirmamos antes de formalizar un pedido.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button type="button" class="faq-q sans" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span>¿Qué garantía tienen las piezas?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div><p>Todas las piezas tienen 15 días calendario de garantía por defectos de fabricación (costuras, cierres o pedrería suelta), contados desde la entrega. Conserva tu comprobante de compra. Más detalles en la <a href="terminos.html#garantia">política de garantía</a>.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button type="button" class="faq-q sans" id="faq-q7" aria-expanded="false" aria-controls="faq-a7"><span>¿Cómo hago un reclamo?</span><span class="faq-icon" aria-hidden="true"></span></button></h3>
+          <div class="faq-a" id="faq-a7" role="region" aria-labelledby="faq-q7"><div><p>Escríbenos a janiaperez346@gmail.com o por WhatsApp al +57 316 102 5260 con tu nombre, la descripción del reclamo y fotos si aplica. Respondemos en un máximo de 5 días hábiles. Ver <a href="terminos.html#reclamos">reclamos</a>.</p></div></div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
 </main>
@@ -358,21 +393,12 @@
     </div>
 
     <div class="footer-col">
-      <div class="legal-title">Páginas</div>
-      <ul class="legal-list">
-        <li><a href="#/inicio" data-route="inicio">Inicio</a></li>
-        <li><a href="#/mision-vision" data-route="mision-vision">Misión y Visión</a></li>
-        <li><a href="#/nosotros" data-route="nosotros">Sobre nosotros</a></li>
-        <li><a href="#/coleccion" data-route="coleccion">Colección</a></li>
-        <li><a href="#/preguntas" data-route="preguntas">Preguntas frecuentes</a></li>
-        <li><a href="#/contacto" data-route="contacto">Contacto y agendamiento</a></li>
-      </ul>
+      <div class="legal-title">Horario de atención</div>
+      <p class="footer-hours">Lunes a sábado: 8:00 a. m. – 5:00 p. m.<br>Domingo: cerrado.</p>
     </div>
 
     <div class="footer-col">
-      <div class="legal-title">Horario de atención</div>
-      <p class="footer-hours">Lunes a sábado: 8:00 a. m. – 5:00 p. m.<br>Domingo: cerrado.</p>
-      <div class="legal-title footer-legal-title">Legal</div>
+      <div class="legal-title">Legal</div>
       <ul class="legal-list">
         <li><a href="terminos.html#condiciones">Términos y condiciones</a></li>
         <li><a href="terminos.html#garantia">Política de garantía</a></li>
