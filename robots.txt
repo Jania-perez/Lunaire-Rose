@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://samuelsalcedo1928-ui.github.io/Lunaire-Rose/sitemap.xml
+Sitemap: https://jania-perez.github.io/Lunaire-Rose/sitemap.xml
