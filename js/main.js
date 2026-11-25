@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         prev.classList.remove('active');
         prev.classList.add('leaving');
-        timer = setTimeout(reveal, 160);
+        timer = setTimeout(reveal, 220);
       }
     };
 
