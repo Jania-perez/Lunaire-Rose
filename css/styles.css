@@ -653,9 +653,9 @@ img { max-width: 100%; display: block; }
    ===================================================================== */
 #app { outline: none; }
 .view { display: none; }
-.view.active { display: block; animation: viewIn 0.55s ease-out both; }
-.view.leaving { display: block; animation: viewOut 0.22s ease-in both; }
-@keyframes viewIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.view.active { display: block; animation: viewIn 0.6s cubic-bezier(0.22,1,0.36,1) both; }
+.view.leaving { display: block; animation: viewOut 0.3s ease-in both; }
+@keyframes viewIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes viewOut { from { opacity: 1; } to { opacity: 0; } }
 
 /* Encabezado de cada vista (el nav flota sobre el contenido en escritorio). */
@@ -888,15 +888,20 @@ body.lightbox-open { overflow: hidden; }
 .welcome-big { margin: 0 0 22px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(42px, 6vw, 78px); line-height: 1.04; color: var(--fg); }
 .welcome-big em { color: var(--accent); font-style: italic; }
 .welcome-letters .welcome-lead { max-width: 460px; }
-.welcome-grid .qr-card { flex: none; width: 320px; padding: 24px; gap: 18px; }
-.welcome-grid .qr-link { max-width: 272px; }
-.welcome-grid .qr-card img { max-width: 272px; }
+.welcome-grid .qr-card { flex: none; width: 410px; padding: 28px; gap: 20px; }
+.welcome-grid .qr-link { max-width: 352px; }
+.welcome-grid .qr-card img { max-width: 352px; }
+@media (max-width: 1100px) {
+  .welcome-grid { gap: 40px; }
+  .welcome-grid .qr-card { width: 340px; padding: 24px; }
+  .welcome-grid .qr-link, .welcome-grid .qr-card img { max-width: 288px; }
+}
 .welcome-grid .qr-card figcaption { font-size: 14px; }
 @media (max-width: 860px) {
   .welcome-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; justify-items: center; }
   .welcome-letters { text-align: center; }
   .welcome-letters .welcome-lead { margin: 0 auto; }
-  .welcome-grid .qr-card { flex-direction: column; text-align: center; width: min(100%, 320px); padding: 20px; }
-  .welcome-grid .qr-link { width: 100%; max-width: 252px; flex: none; margin: 0 auto; }
-  .welcome-grid .qr-card img { width: 100%; flex: none; }
+  .welcome-grid .qr-card { flex-direction: column; text-align: center; width: min(100%, 360px); padding: 20px; }
+  .welcome-grid .qr-link { width: 100%; max-width: 300px; flex: none; margin: 0 auto; }
+  .welcome-grid .qr-card img { width: 100%; max-width: 300px; flex: none; }
 }

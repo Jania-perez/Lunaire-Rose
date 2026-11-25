@@ -153,7 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         prev.classList.remove('active');
         prev.classList.add('leaving');
-        timer = setTimeout(reveal, 220);
+        // Si estás más abajo, la página sube suavemente mientras se desvanece.
+        const scrolled = window.scrollY > 40;
+        if (scrolled) window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        timer = setTimeout(reveal, scrolled ? 380 : 300);
       }
     };
 
