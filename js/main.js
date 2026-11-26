@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(() => transitionEl.classList.add('hidden'));
     });
 
+    // Al volver con "atrás", el navegador restaura la página desde su caché con la
+    // cortina todavía puesta: se quita aquí para que no quede la pantalla oscura.
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted || transitionEl.classList.contains('active')) {
+        transitionEl.classList.remove('active');
+        transitionEl.classList.add('hidden');
+      }
+    });
+
     document.querySelectorAll('a[href]').forEach((link) => {
       const href = link.getAttribute('href');
       const isInternalPage = href && /\.html(#.*)?$/.test(href) && !link.target;
