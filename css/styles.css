@@ -151,7 +151,7 @@ img { max-width: 100%; display: block; }
   padding: 11px 22px;
   border: 1px solid var(--accent);
   background: var(--accent);
-  color: var(--bg);
+  color: var(--fg);
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -344,11 +344,11 @@ img { max-width: 100%; display: block; }
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--bg);
+  color: var(--fg);
   background: var(--accent);
   transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), background 0.3s ease;
 }
-.cta-btn:hover { transform: scale(1.05); color: var(--bg); }
+.cta-btn:hover { transform: scale(1.05); color: var(--fg); }
 .cta-btn { position: relative; }
 .cta-btn::after {
   content: '';
